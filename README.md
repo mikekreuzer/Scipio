@@ -1,2 +1,2 @@
 # Scipio
-Scripting the download &amp; building of Cocoa frameworks
+Download &amp; build Cocoa frameworks
