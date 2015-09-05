@@ -1,17 +1,19 @@
 # Scipio
 
+Carthago delenda est!
+
 <img align="right" src="Scipio_head.png" alt="Scipio Africanus">
 
-Scipio scripts the download & building frameworks of Cocoa frameworks. Scipio's offered as an alternative to Carthage and CocoaPods.
+Scipio scripts the download & build of Cocoa frameworks. Scipio's offered as an alternative to Carthage and CocoaPods.
 
-Scipio uses Cartfiles as Carthage and the basic workflow is the same:
+Scipio uses the same Cartfiles as Carthage and the basic workflow is the same:
 
 1. Install Scipio
 2. Create a Cartfile that lists the frameworks you’d like to use
 3. Type <code>scipio</code> and Scipio will fetch and build each framework you’ve listed
 4. Drag the framework binaries into your application’s Xcode project
 
-## CocoaPods, Carthage and Scipio. Carthago delenda est!
+## CocoaPods, Carthage and Scipio.
 
 [CocoaPods](http://cocoapods.org/) is the grandfather of dependency management for Cocoa. [Carthage](https://github.com/Carthage/Carthage) was created to be a decentralized alternative. Carthage was written in Swift, and not only Swift, but some of the most experimental bits of Swift. I love Swift. I love the idea of Carthage, so I wrote Scipio, in Python. Python isn't going to get experimental again any time soon, and decoupling the language of this tool and the still rapidly changing language it's used to build means for (I hope) a lot less heartache.
 
@@ -25,7 +27,7 @@ pip install scipio
 
 ## Usage
 
-In the folder you want the frameworks, create a file called 'Cartfile', with lines in the format:
+In the folder you want your frameworks built, create a file called 'Cartfile' with lines in the format:
 
 ```ogdl
 github "Alamofire/Alamofire" >=2.0.0-beta.2
@@ -39,9 +41,9 @@ Then cd to the folder and run Scipio from the terminal
 scipio
 ````
 
-Scipio will download the best match it can find from the tagged versions of the repository on Github and build the project/workspace. It doesn't have to be a framework, but building frameworks is the main use case. If the project has a Cartfile in it that will be downloaded and built first (and so on recursively).
+Scipio will download the best match it can find from the tagged versions of the repository on Github and build the project/workspace. It doesn't have to be a framework, but building frameworks is the main use case. If the project has a Cartfile in it that framework will be downloaded and built first (and so on recursively).
 
-You can pass along arguments at the command line to modify scipio or xcodebuild's behavior. Type <code>scipio -h</code> for the current list. If a target/scheme etc exists in the project or workspace it will be used. If it doesn't, or if none are supplied then the defaults set up by a framework's authors' are used.
+You can pass along arguments at the command line to modify scipio or xcodebuild's behavior. Type <code>scipio -h</code> for the current list. If a target/scheme etc exists in the project or workspace it will be used. If it doesn't exist, or if no arguments are supplied then the defaults set up by a framework's authors' are used.
 
 ## Optional arguments
 
@@ -75,6 +77,7 @@ Everything else: [MIT](http://opensource.org/licenses/MIT)
 - 0.1.1 -- 6 September 2015
   - [x] added missing ABOUT.rst file and manifest
 - Next
+  - [ ] update ABOUT.rst to fix a typo (done on github)
   - [ ] unit tests
   - [ ] better (ie some) error messages
   - [ ] more semver constraints, support Ruby's ~> and Node's ~ and everyone's =
