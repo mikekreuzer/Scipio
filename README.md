@@ -1,6 +1,6 @@
 # Scipio
 
-.right[![Scipio Africanus](Scipio_head.png)]
+<img align="right" src="Scipio_head.png" alt="Scipio Africanus">
 
 Scipio scripts the download & building frameworks of Cocoa frameworks. Scipio's offered as an alternative to Carthage and CocoaPods.
 
