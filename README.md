@@ -1,25 +1,23 @@
 # Scipio
 
-Carthago delenda est!
-
-<img align="right" src="Scipio_head.png" alt="Scipio Africanus">
-
-Scipio scripts the download & build of Cocoa frameworks. Scipio's offered as an alternative to Carthage and CocoaPods.
-
-Scipio uses the same Cartfiles as Carthage and the basic workflow is the same:
+Scipio scripts the download & build of Cocoa frameworks. Scipio's offered as an alternative to Carthage and CocoaPods. Scipio uses the same sort of Cartfiles as Carthage and the basic workflow is the same:
 
 1. Install Scipio
-2. Create a Cartfile that lists the frameworks you’d like to use
+2. Create a Cartfile that lists the frameworks you’d like to use (ie it's a distributed system)
 3. Type <code>scipio</code> and Scipio will fetch and build each framework you’ve listed
 4. Drag the framework binaries into your application’s Xcode project
 
 ## CocoaPods, Carthage and Scipio.
 
-[CocoaPods](http://cocoapods.org/) is the grandfather of dependency management for Cocoa. [Carthage](https://github.com/Carthage/Carthage) was created to be a decentralized alternative. Carthage was written in Swift, and not only Swift, but some of the most experimental bits of Swift. I love Swift. I love the idea of Carthage, so I wrote Scipio, in Python. Python isn't going to get experimental again any time soon, and decoupling the language of this tool and the still rapidly changing language it's used to build means for (I hope) a lot less heartache.
+<img align="right" src="Scipio_head.png" alt="Scipio Africanus">
+
+Carthago delenda est!
+
+[CocoaPods](http://cocoapods.org/) is the grandfather of dependency management for Cocoa. [Carthage](https://github.com/Carthage/Carthage) was created to be a decentralized alternative. Carthage was written in Swift, and not only Swift, but some of the most experimental bits of Swift. I love Swift. I love the idea of Carthage, so I wrote Scipio, in Python. Python isn't going to get experimental again any time soon, and decoupling the language of this tool from the still rapidly changing language it's used to build means for (I hope) a lot less heartache.
 
 ## Installation
 
-Scipio's a Python script, it should run in Python 2 or 3, and on a Mac you already have that installed. In your terminal type:
+Scipio's a Python script, it should run in Python 2 or 3, and on a Mac you already have that installed. You'll also obviously need Xcode. To install Scipio, open terminal and type:
 
 ````bash
 pip install scipio
@@ -33,7 +31,9 @@ In the folder you want your frameworks built, create a file called 'Cartfile' wi
 github "Alamofire/Alamofire" >=2.0.0-beta.2
 ```
 
-That's the same format Carthage uses, though the ~ comparison operator isn't supported yet. You can use < <= == => and >
+That's more or less the same format Carthage uses, though there are some differences. The version comparators supported are < <= = == => > ~ and ~>
+
+= and == are synonymous, but ~ and ~> aren't (see below for the differences to Carthage's Cartfiles).
 
 Then cd to the folder and run Scipio from the terminal
 
@@ -59,6 +59,20 @@ Flag             | Means
 -verbose         | xcodebuild will let you know, a lot
 -v, --version    | show program's version number and exit
 
+## Differences to Carthage
+
+So far the incompatibilities that matter are in the Cartfile. Semantic version comparisons are handled differently, and so are non Github gits.
+
+Using Node, ~1.2 and ~1.2.0 for example both don't match 1.3. In Ruby ~>1.2.0 doesn't match 1.3, but ~>1.2 does. Scipio respects both ~ and ~>. Carthage doesn't, Carthage uses Ruby's ~> to mean Node's ~.
+
+== and = can both be used to mean equals.
+
+So far named tags aren't supported in place of version constraints (but I plan to).
+
+Others gits are introduced with the word git in Carthage Cartfiles, but Scipio doesn't use that. (The other git functionality is completely untested so that may change.)
+
+I'm not trying especially hard eg to support OGDL, one of Carthage's many strange design choices, but I'm not trying to become incompatible either.
+
 ## Credits
 
 Carthage and Cocoapods, obviously. Miguel Hermoso for the [picture of Scipio](https://commons.wikimedia.org/wiki/File:Escipión_africano.JPG) looking existentially disappointed.
@@ -71,16 +85,20 @@ Everything else: [MIT](http://opensource.org/licenses/MIT)
 
 ## History & Plans
 
-- 0.1.0 -- Initial release, 5 September 2015
+- 0.1.0 -- 5 September 2015
+  - [x] initial release
   - [x] bread & butter: download and build Xcode projects from Github
-  - [x] stable (hopefully, so far)
 - 0.1.1 -- 6 September 2015
   - [x] added missing ABOUT.rst file and manifest
+  - [ ] version incorrectly calls itself 0.1.0
+- 0.2.0 -- 8 September 2015
+  - [x] more semantic version constraints, Ruby's ~> Node's ~ and everyone's =
+  - [x] abandoned too slavish a compatibility with Carthage (eg not using ~> to mean ~)
+  - [x] documentation
 - Next
-  - [ ] update ABOUT.rst to fix a typo (done on github)
   - [ ] unit tests
   - [ ] better (ie some) error messages
-  - [ ] more semver constraints, support Ruby's ~> and Node's ~ and everyone's =
+  - [ ] named tags in place of version constraints
   - [ ] optional recursion depth limits
   - [ ] circular dependency checks
   - [ ] duplicate download checks

@@ -82,9 +82,34 @@ def more_relaxed_semver(relaxed_version):
 
 
 def more_relaxed_comparison(relaxed_comparator):
-    """Deal with Ruby's ~>, Node's ~, and everyone's ="""
-    # to do
-    return relaxed_comparator
+    """Deal with Ruby's ~>, Node's ~, and everyone's =
+    using Node ~1.2 and ~1.2.0 both don't match 1.3
+    in Ruby ~>1.2.0 doesn't match 1.3, but ~>1.2 does
+    NB this is different to how Carthage does it, Carthage uses ~> to mean ~"""
+    match_str = match(r'^(?P<comparator><=|<|==|=>|=|>|~>|~)+(?:\s*)?(?P<version>.+)$',
+                      relaxed_comparator)
+    if match_str:
+        comp = match_str.group('comparator')
+        val = more_relaxed_semver(match_str.group('version'))
+        if comp in ['<', '<=', '==', '=>', '>']:
+            return comp + val
+        elif comp is '=':
+            return '==' + val
+        elif comp == '~' or comp == '~>':
+            out = '>=' + val + ',<'
+            ver = semantic_version.Version(more_relaxed_semver(val), partial=True)
+            if comp == '~>' and match_str.group('version').count('.') == 1:
+                out += '='
+            if ver.patch == 0 and ver.minor == 0:
+                upper = str(ver.next_major())
+            else:
+                upper = str(ver.next_minor())
+            return out + upper
+        else:
+            return '>=' + str(val)
+    else:
+        return '>=0.0.0'
+
 
 def get_best_version_address(tags, constraint, record_str, cartfile_resolved):
     """Get the address of the of the best version with or without constraints,
@@ -92,7 +117,7 @@ def get_best_version_address(tags, constraint, record_str, cartfile_resolved):
     versions = [semantic_version.Version(more_relaxed_semver(tag['name']), partial=True)
                 for tag in tags]
     try:
-        specification = semantic_version.Spec(constraint)
+        specification = semantic_version.Spec(more_relaxed_comparison(constraint))
     except ValueError:
         specification = semantic_version.Spec('>0.0.0')
     best = specification.select(versions)
