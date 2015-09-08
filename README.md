@@ -13,7 +13,9 @@ Scipio scripts the download & build of Cocoa frameworks. Scipio's offered as an 
 
 Carthago delenda est!
 
-[CocoaPods](http://cocoapods.org/) is the grandfather of dependency management for Cocoa. [Carthage](https://github.com/Carthage/Carthage) was created to be a decentralized alternative. Carthage was written in Swift, and not only Swift, but some of the most experimental bits of Swift. I love Swift. I love the idea of Carthage, so I wrote Scipio, in Python. Python isn't going to get experimental again any time soon, and decoupling the language of this tool from the still rapidly changing language it's used to build means for (I hope) a lot less heartache.
+[CocoaPods](http://cocoapods.org/) is the grandfather of dependency management for Cocoa. [Carthage](https://github.com/Carthage/Carthage) was created to be a decentralized alternative. Carthage was written in Swift, and not only Swift, but some of the most experimental bits of Swift.
+
+I love Swift. I love the idea of Carthage, so I wrote Scipio, in Python. Python isn't going to get experimental again any time soon, and decoupling the language of this tool from the still rapidly changing language it's used to build means for (I hope) a lot less heartache.
 
 ## Installation
 
