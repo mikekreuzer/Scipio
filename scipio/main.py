@@ -29,7 +29,7 @@ PARSER.add_argument('-target', help='xcodebuild: project target name',
                     required=False, metavar='')
 PARSER.add_argument('-verbose', help='xcodebuild will let you know, a lot',
                     required=False, action='store_true', default=False)
-PARSER.add_argument('-v', '--version', action='version', version='%(prog)s 0.2.0')
+PARSER.add_argument('-v', '--version', action='version', version='%(prog)s 0.2.1')
 ARGS = PARSER.parse_args()
 
 def scipio():

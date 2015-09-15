@@ -97,6 +97,8 @@ Everything else: [MIT](http://opensource.org/licenses/MIT)
   - [x] more semantic version constraints, Ruby's ~> Node's ~ and everyone's =
   - [x] abandoned too slavish a compatibility with Carthage (eg not using ~> to mean ~)
   - [x] documentation
+- 0.2.1 -- 15 September 2015
+  - [x] fixed a bug with semver comparison (a >= typo)
 - Next
   - [ ] unit tests
   - [ ] better (ie some) error messages

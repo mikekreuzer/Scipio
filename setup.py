@@ -9,7 +9,7 @@ with open(path.join(ROOT, 'ABOUT.rst')) as f:
 
 setup(
     name='scipio',
-    version='0.2.0',
+    version='0.2.1',
     description='Automate github downloads and xcodebuild',
     long_description=LONG_DESC,
     url='https://github.com/mikekreuzer/scipio',

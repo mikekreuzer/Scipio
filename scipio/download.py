@@ -86,12 +86,12 @@ def more_relaxed_comparison(relaxed_comparator):
     using Node ~1.2 and ~1.2.0 both don't match 1.3
     in Ruby ~>1.2.0 doesn't match 1.3, but ~>1.2 does
     NB this is different to how Carthage does it, Carthage uses ~> to mean ~"""
-    match_str = match(r'^(?P<comparator><=|<|==|=>|=|>|~>|~)+(?:\s*)?(?P<version>.+)$',
+    match_str = match(r'^(?P<comparator><=|<|==|>=|=|>|~>|~)+(?:\s*)?(?P<version>.+)$',
                       relaxed_comparator)
     if match_str:
         comp = match_str.group('comparator')
         val = more_relaxed_semver(match_str.group('version'))
-        if comp in ['<', '<=', '==', '=>', '>']:
+        if comp in ['<', '<=', '==', '>=', '>']:
             return comp + val
         elif comp is '=':
             return '==' + val
