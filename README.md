@@ -33,7 +33,7 @@ In the folder you want your frameworks built, create a file called 'Cartfile' wi
 github "Alamofire/Alamofire" >=2.0.0-beta.2
 ```
 
-That's more or less the same format Carthage uses, though there are some differences. The version comparators supported are < <= = == => > ~ and ~>
+That's more or less the same format Carthage uses, though there are some differences. The version comparators supported are < <= = == >= > ~ and ~>
 
 = and == are synonymous, but ~ and ~> aren't (see below for the differences to Carthage's Cartfiles).
 
