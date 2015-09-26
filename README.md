@@ -65,13 +65,13 @@ Flag             | Means
 
 So far the incompatibilities that matter are in the Cartfile. Semantic version comparisons are handled differently, and so are non Github gits.
 
-Using Node, ~1.2 and ~1.2.0 for example both don't match 1.3. In Ruby ~>1.2.0 doesn't match 1.3, but ~>1.2 does. Scipio respects both ~ and ~>. Carthage doesn't, Carthage uses Ruby's ~> to mean Node's ~.
+Using Node, ~1.2 and ~1.2.0 for example both don't match 1.3. In Ruby ~>1.2.0 doesn't match 1.3, but ~>1.2 does. Scipio respects both ~ and ~>. Carthage doesn't. Carthage uses Ruby's ~> to mean Node's ~.
 
 == and = can both be used to mean equals.
 
 So far named tags aren't supported in place of version constraints (but I plan to).
 
-Others gits are introduced with the word git in Carthage Cartfiles, but Scipio doesn't use that. (The other git functionality is completely untested so that may change.)
+Others gits are introduced with the word git in Carthage Cartfiles, in Scipio that's optional. (The other git functionality is completely untested so that may change.)
 
 I'm not trying especially hard eg to support OGDL, one of Carthage's many strange design choices, but I'm not trying to become incompatible either.
 
@@ -94,17 +94,20 @@ Everything else: [MIT](http://opensource.org/licenses/MIT)
   - [x] added missing ABOUT.rst file and manifest
   - [ ] version incorrectly calls itself 0.1.0
 - 0.2.0 -- 8 September 2015
-  - [x] more semantic version constraints, Ruby's ~> Node's ~ and everyone's =
+  - [x] added more semantic version constraints, Ruby's ~> Node's ~ and everyone's =
   - [x] abandoned too slavish a compatibility with Carthage (eg not using ~> to mean ~)
-  - [x] documentation
+  - [x] documentation extended
 - 0.2.1 -- 15 September 2015
-  - [x] fixed a bug with semver comparison (a >= typo)
+  - [x] fixed a bug with semver comparison (greater than or equals to typo)
+- 0.2.2 -- 26 September 2015
+  - [x] fixed the lack of unit tests - starting with 92% coverage of test_download
+  - [x] fixed ignoring the optional (optional in Scipio) word 'git' in front of non-GitHub git URLs in Cart files
+  - [x] changed the name of the ABOUT.rst file to README.rst
 - Next
-  - [ ] unit tests
   - [ ] better (ie some) error messages
   - [ ] named tags in place of version constraints
   - [ ] optional recursion depth limits
   - [ ] circular dependency checks
   - [ ] duplicate download checks
   - [ ] better OGDL parsing / maybe some alternative to that
-  - [ ] possible tie in to other (Ruby?) build automation
+  - [ ] possible tie in to other (Ruby?) build automation - composable build tools are good build tools

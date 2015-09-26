@@ -4,12 +4,12 @@ from os import path
 
 ROOT = path.dirname(path.realpath(__file__))
 
-with open(path.join(ROOT, 'ABOUT.rst')) as f:
+with open(path.join(ROOT, 'README.rst')) as f:
     LONG_DESC = f.read()
 
 setup(
     name='scipio',
-    version='0.2.1',
+    version='0.2.2',
     description='Automate github downloads and xcodebuild',
     long_description=LONG_DESC,
     url='https://github.com/mikekreuzer/scipio',
@@ -31,5 +31,6 @@ setup(
     },
     keywords='xcode xcodebuild github Carthage Cocoapods',
     packages=['scipio'],
-    install_requires=['requests', 'semantic_version']
+    install_requires=['requests', 'semantic_version'],
+    tests_require=['nose', 'responses']
 )

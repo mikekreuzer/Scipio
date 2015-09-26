@@ -3,7 +3,7 @@ constraints given, download & extract that zipball"""
 
 from collections import namedtuple
 import json
-from re import match, VERBOSE
+from re import match, sub, VERBOSE
 from os import makedirs, path
 import zipfile
 
@@ -41,7 +41,8 @@ def get_tags(download_target):
     if download_target.server == "github":
         api_address = "https://api.github.com/repos/" + download_target.repository + "/tags"
     else:
-        api_address = download_target.server + download_target.repository + "/tags"
+        api_address = sub(r'^\s*git\s', '', download_target.server, count=1)
+        api_address = api_address + download_target.repository + "/tags"
     result = requests.get(api_address)
     if result.ok:
         tags = json.loads(result.text or result.content)
@@ -111,8 +112,8 @@ def more_relaxed_comparison(relaxed_comparator):
         return '>=0.0.0'
 
 
-def get_best_version_address(tags, constraint, record_str, cartfile_resolved):
-    """Get the address of the of the best version with or without constraints,
+def calc_best_version_address(tags, constraint, record_str, cartfile_resolved):
+    """Calculate the address of the of the best version with or without constraints,
     including a particular specific version"""
     versions = [semantic_version.Version(more_relaxed_semver(tag['name']), partial=True)
                 for tag in tags]
