@@ -9,7 +9,7 @@ with open(path.join(ROOT, 'README.rst')) as f:
 
 setup(
     name='scipio',
-    version='0.2.2',
+    version='0.3.0',
     description='Automate github downloads and xcodebuild',
     long_description=LONG_DESC,
     url='https://github.com/mikekreuzer/scipio',
@@ -31,6 +31,7 @@ setup(
     },
     keywords='xcode xcodebuild github Carthage Cocoapods',
     packages=['scipio'],
-    install_requires=['requests', 'semantic_version'],
-    tests_require=['nose', 'responses']
+    install_requires=['requests>=2.7.0', 'semantic_version>=2.4.2'],
+    tests_require=['nose>=1.0', 'responses>=0.4.0'],
+    setup_requires=['nose>=1.0', 'responses>=0.4.0']
 )
