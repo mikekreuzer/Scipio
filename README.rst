@@ -133,8 +133,8 @@ untested so that may change.)
 Contact
 -------
 
-`Twitter <https://twitter.com/mikekreuzer>`__
-`GitHub <https://github.com/mikekreuzer/>`__
+-  `Twitter <https://twitter.com/mikekreuzer>`__
+-  `GitHub <https://github.com/mikekreuzer/>`__
 
 Credits
 -------

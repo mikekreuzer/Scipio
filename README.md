@@ -80,8 +80,8 @@ Others gits are introduced with the word git in Carthage Cartfiles, in Scipio th
 
 ## Contact
 
-[Twitter](https://twitter.com/mikekreuzer)
-[GitHub](https://github.com/mikekreuzer/)
+- [Twitter](https://twitter.com/mikekreuzer)
+- [GitHub](https://github.com/mikekreuzer/)
 
 ## Credits
 
