@@ -19,10 +19,12 @@ def parse_args(args):
                                      download & extract that zipball, repeat this recusively, \
                                      then build these things using xcodebuild',
                                      epilog="Carthago delenda est")
-    parser.add_argument('-cart', help='enter a one liner instead of a Cartfile',
-                        required=False, metavar='')
     parser.add_argument('-down', help='download & unzip but don\'t build',
                         required=False, action='store_true', default=False)
+    parser.add_argument('-plistb', help='change all plist build numbers to this string',
+                        required=False, metavar='')
+    parser.add_argument('-plistv', help='change all plist version numbers to this string',
+                        required=False, metavar='')
     parser.add_argument('-project', help='xcodebuild: project name',
                         required=False, metavar='')
     parser.add_argument('-workspace', help='xcodebuild: workspace name',
@@ -37,7 +39,7 @@ def parse_args(args):
                         required=False, metavar='')
     parser.add_argument('-verbose', help='xcodebuild will let you know, a lot',
                         required=False, action='store_true', default=False)
-    parser.add_argument('-v', '--version', action='version', version='%(prog)s 0.3.0')
+    parser.add_argument('-v', '--version', action='version', version='%(prog)s 0.4.0')
     return parser.parse_known_args(args)[0]
 
 

@@ -29,7 +29,7 @@ pip install scipio
 
 In the folder you want your frameworks built, create a file called 'Cartfile' with lines in the format:
 
-```ogdl
+```bash
 github "Alamofire/AlamofireImage" ~>2.1
 ```
 
@@ -53,6 +53,8 @@ Flag             | Means
 ---------------- | ---------------------------------
 -h, --help       | show this help message and exit
 -down            | download & unzip but don't build
+-plistb          | change all plist build numbers to this string
+-plistv          | change all plist version numbers to this string
 -project         | xcodebuild: project name
 -workspace       | xcodebuild: workspace name
 -configuration   | xcodebuild: configuration name
@@ -77,6 +79,14 @@ So far named tags aren't supported in place of version constraints (but I plan t
 ### Non Github gits
 
 Others gits are introduced with the word git in Carthage Cartfiles, in Scipio that's optional. (The other git functionality is completely untested so that may change.)
+
+### Convenience methods
+
+You can change the build and version numbers of all the projects you're building in one Cartfile to be the same, using the optional -plistb and -plistv flags. For a brief moment iTunes Connect seems to have required this, possibly in error. This doesn't work with download & unzip only, only for builds. As a philosophical aside, this is a little CocoaPods-like for my taste. Use is eg
+
+````bash
+scipio -plistv 42.0.0
+````
 
 ## Contact
 
@@ -114,14 +124,17 @@ Everything else: [MIT](http://opensource.org/licenses/MIT)
 - 0.3.0 -- 25 October 2015
   - [x] added the optional -down flag, to download & unzip files without Scipio attempting to build them
   - [x] added the tests written so far to the PyPI distribution
-  - [x] README.rst better reflects README.md, thanks to pandoc
+  - [x] README.rst better reflects README.md
+  - [ ] mistakenly includes the -cart flag
+- 0.4.0 -- 26 October 2015
+  - [x] added optional -plistb and -plistv flags
+  - [x] fixed the extraneous -cart flag
 
 - Next
-  - [ ] the option to change the version number in the projects' plists to be the one value (apparently iTunes Connect needs that)
   - [ ] optional -cart flag, to supply the download target via the command line, as a convenient replacement for one line Cart files
-  - [ ] support for named tags in Cart files
+  - [ ] support for named tags
   - [ ] better script the PyPI build process (eg the pandoc step, version numbers in two places etc)
-  - [ ] add the embedded HTML in the Markdown file to the RST file
+  - [ ] come up with RST that renders properly on the PyPI site
   - [ ] better (ie some!) error messages
   - [ ] 95% test coverage
   - [ ] optional recursion depth limits

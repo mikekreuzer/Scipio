@@ -3,7 +3,7 @@
 from glob import glob
 from re import search, UNICODE
 import subprocess
-from os import chdir, path
+from os import chdir, path, walk
 from shutil import move
 
 def parse_xcodebuild_list(output_string):
@@ -107,11 +107,30 @@ def setup_build(project, possible_args, workspace=False):
     run_build(command, possible_args.verbose, project)
 
 
+def edit_plist(version_number_string, build_number_string, file_name):
+    """Change the version and/or build number strings in this plist file"""
+    if version_number_string is not None:
+        subprocess.call(['plutil', '-replace', 'CFBundleShortVersionString',
+                         '-string', version_number_string, file_name])
+    if build_number_string is not None:
+        subprocess.call(['plutil', '-replace', 'CFBundleVersion',
+                         '-string', build_number_string, file_name])
+
+
 def build_project_or_workspace(project, args):
     """Try to build the workspace or project specified via command-line arguments, passing on
     any arguments provided. Otherwise try to build the first scheme for the first workspace found,
     and if there isn't a workspace, the first project."""
-    chdir('./' + project.folder) #project and zip file are in here
+    start = path.abspath('./' + project.folder) #project and zip file are in here
+    chdir(start)
+
+    # optionally rewrite some plist files first
+    if args.plistv is not None or args.plistb is not None:
+        plist_files = [path.join(dirpath, f)
+                       for dirpath, dirnames, files in walk(start)
+                       for f in files if f.endswith('.plist')]
+        for file in plist_files:
+            edit_plist(args.plistv, args.plistb, path.abspath(file))
 
     if project.project_files:
         project_names_and_locs = {search(r'/(.+).xcodeproj$', name).groups()[0]: name
