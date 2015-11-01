@@ -180,6 +180,12 @@ History & Plans
 -  added some more unit tests, have 60% coverage
 -  version's only recorded in the one place now
 -  scripted my setup.py setup, in config.py
+-  missing VERSION file causes CTD
+
+0.4.2 -- 1 November 2015
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  VERSION added to package\_data in setup.py
 
 Next
 ~~~~

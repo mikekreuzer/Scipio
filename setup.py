@@ -34,6 +34,7 @@ setup(
     },
     keywords='xcode xcodebuild github Carthage Cocoapods',
     packages=['scipio'],
+    package_data={'scipio': ['VERSION']},
     install_requires=['requests>=2.7.0', 'semantic_version>=2.4.2'],
     tests_require=['nose>=1.0', 'responses>=0.4.0'],
     setup_requires=['nose>=1.0', 'responses>=0.4.0']
