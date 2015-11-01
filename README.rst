@@ -129,41 +129,67 @@ Everything else: `MIT <http://opensource.org/licenses/MIT>`__
 History & Plans
 ---------------
 
--  0.1.0 -- 5 September 2015
--  [x] initial release
--  [x] bread & butter: download and build Xcode projects from Github
--  0.1.1 -- 6 September 2015
--  [x] added missing ABOUT.rst file and manifest
--  [ ] version incorrectly calls itself 0.1.0
--  0.2.0 -- 8 September 2015
--  [x] added more semantic version constraints, Ruby's ~> Node's ~ and =
--  [x] abandoned too slavish a compatibility with Carthage (eg not using ~> to mean ~)
--  [x] better docs
--  0.2.1 -- 15 September 2015
--  [x] fixed a bug with semver comparison (greater than or equals to typo)
--  0.2.2 -- 26 September 2015
--  [x] fixed the lack of unit tests - starting with 92% coverage of test\_download
--  [x] fixed ignoring the optional (optional in Scipio) word 'git' in front of non-GitHub git URLs in Cart files
--  [x] changed the name of the ABOUT.rst file to README.rst
--  0.3.0 -- 25 October 2015
--  [x] added the optional -down flag, to download & unzip files without Scipio attempting to build them
--  [x] added the tests written so far to the PyPI distribution
--  [x] README.rst better reflects README.md
--  [ ] mistakenly includes the -cart flag
--  0.4.0 -- 26 October 2015
--  [x] added optional -plistb and -plistv flags
--  [x] fixed the extraneous -cart flag
+0.1.0 -- 5 September 2015
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
--  Next
--  [ ] optional -cart flag, to supply the download target via the command line, as a convenient replacement for one line Cart files
--  [ ] support for named tags
--  [ ] better script the PyPI build process (eg the pandoc step, version numbers in two places etc)
--  [ ] come up with RST that renders properly on the PyPI site
--  [ ] better (ie some!) error messages
--  [ ] 95% test coverage
--  [ ] optional recursion depth limits
--  [ ] circular dependency checks
--  [ ] duplicate download checks
--  [ ] better OGDL parsing / maybe some alternative to that
--  [ ] look into how non Github gits work properly
--  [ ] possible tie in to other (Ruby?) build automation - composable build tools are good build tools
+-  initial release
+-  bread & butter: download and build Xcode projects from Github
+
+0.1.1 -- 6 September 2015
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  added missing ABOUT.rst file and manifest
+-  version incorrectly calls itself 0.1.0
+
+0.2.0 -- 8 September 2015
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  added more semantic version constraints, Ruby's ~> Node's ~ and =
+-  abandoned too slavish a compatibility with Carthage (eg not using ~> to mean ~)
+-  better docs
+
+0.2.1 -- 15 September 2015
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  fixed a bug with semver comparison (greater than or equals to typo)
+
+0.2.2 -- 26 September 2015
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  fixed the lack of unit tests - starting with 92% coverage of test\_download
+-  fixed ignoring the optional (optional in Scipio) word 'git' in front of non-GitHub git URLs in Cart files
+-  changed the name of the ABOUT.rst file to README.rst
+
+0.3.0 -- 25 October 2015
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  added the optional -down flag, to download & unzip files without Scipio attempting to build them
+-  added the tests written so far to the PyPI distribution
+-  README.rst better reflects README.md
+-  mistakenly includes the -cart flag
+
+0.4.0 -- 26 October 2015
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  added optional -plistb and -plistv flags
+-  fixed the extraneous -cart flag
+
+0.4.1 -- 1 November 2015
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  added some more unit tests, have 60% coverage
+-  version's only recorded in the one place now
+-  scripted my setup.py setup, in config.py
+
+Next
+~~~~
+
+-  optional -cart flag, to supply the download target via the command line, as a convenient replacement for one line Cart files
+-  support for named tags
+-  better (ie some!) error messages
+-  95% test coverage
+-  optional recursion depth limits
+-  circular dependency checks
+-  duplicate download checks
+-  look into how non Github gits work properly
+-  possible tie in to other (Ruby?) build automation - composable build tools are good build tools

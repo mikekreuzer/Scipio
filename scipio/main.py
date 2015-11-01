@@ -14,6 +14,10 @@ from scipio.download import parse_cart_file, get_tags, calc_best_version_address
 
 def parse_args(args):
     """Command line switches"""
+    version_path = path.join(path.dirname(path.abspath(__file__)), 'VERSION')
+    with open(version_path, 'r') as version_file:
+        version = version_file.read().replace('\n', '')
+
     parser = argparse.ArgumentParser(description='Parse a cartfile, work out the \
                                      verion that best satisfies the constraints given, \
                                      download & extract that zipball, repeat this recusively, \
@@ -39,7 +43,7 @@ def parse_args(args):
                         required=False, metavar='')
     parser.add_argument('-verbose', help='xcodebuild will let you know, a lot',
                         required=False, action='store_true', default=False)
-    parser.add_argument('-v', '--version', action='version', version='%(prog)s 0.4.0')
+    parser.add_argument('-v', '--version', action='version', version=version)
     return parser.parse_known_args(args)[0]
 
 

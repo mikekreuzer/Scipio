@@ -7,9 +7,12 @@ ROOT = path.dirname(path.realpath(__file__))
 with open(path.join(ROOT, 'README.rst')) as f:
     LONG_DESC = f.read()
 
+with open('./scipio/VERSION', 'r') as version_file:
+    VERSION = version_file.read().replace('\n', '')
+
 setup(
     name='scipio',
-    version='0.4.0',
+    version=VERSION,
     description='Automate github downloads and xcodebuild',
     long_description=LONG_DESC,
     url='https://github.com/mikekreuzer/scipio',
